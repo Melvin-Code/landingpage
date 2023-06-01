@@ -1,10 +1,13 @@
-import { Box, Button, Grid, Paper } from "@mui/material";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import { Form } from "react-final-form";
+import PhoneFormat from "./components/formating/phoneFormat";
 import FormInput from "./components/FormInput";
+import { lead } from "./webhook";
 
 function App() {
-  const onSubmit = () => {
-
+  const onSubmit = async (vals) => {
+    const newVals = { name: vals.firstName + ' ' + vals.lastName, ...vals }
+    await lead(newVals)
   }
   return (
     <Paper
@@ -36,13 +39,14 @@ function App() {
                 <Grid
                   container
                   direction={"row"}
-                  rowSpacing={3}
+                  rowSpacing={5}
                   sx={{
                     padding: "2.5rem",
                     // justifyContent: "center ",
                     // width: "40rem",
                   }}
                 >
+                  <Grid item xs={12}><Typography sx={{ margin: '10px 0 20px 0', fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif", fontWeight: '700', textAlign: 'center', color: '#272729', }} variant='h4'><span>Earn</span> passive income now</Typography></Grid>
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <FormInput
@@ -71,7 +75,7 @@ function App() {
                         name="email"
                         label={<Box>Email<Box sx={{ color: 'red !important', display: 'inline' }}>*</Box> </Box>}
                         //   placeholder="het"
-                        type="text"
+                        type="email"
                         width="100%"
                         required
                       />
@@ -80,7 +84,16 @@ function App() {
                       <FormInput
                         name="phone"
                         label={<Box>Phone Number <Box sx={{ color: 'red !important', display: 'inline' }}>*</Box> </Box>}
-                        type="text"
+                        type="tel"
+                        cformat={PhoneFormat}
+                        minLength="10"
+                        validate={(value) => {
+                          return value &&
+                            value !== "" &&
+                            value.split("").length === 10
+                            ? undefined
+                            : "Phone number must be 10 digits";
+                        }}
                         width="100%"
                         required
                       />
@@ -97,26 +110,30 @@ function App() {
                         rows='3'
                         type="text"
                         width="100%"
-                        required
                       />
                     </Grid>
                   </Grid>
-                  <Grid item xs={8}></Grid>
-                  <Button
-                    variant="contained"
-                    sx={{ width: "100%" }}
-                    type="submit"
-                  >
-                    Submit
-                  </Button>
+                  <Grid item xs={8}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: '#f89f4e', borderRadius: '3px', border: '1px solid #f89f4e', textTransform: 'none', padding: '12px 24px', lineHeight: '12px', fontSize: '12px', fontWeight: '700', fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif", '&:hover': {
+                          backgroundColor: '#f89f4e'
+                        }
+                      }}
+                      type="submit"
 
+                    >
+                      Submit
+                    </Button>
+                  </Grid>
                 </Grid>
-              </form>
+              </form >
             );
           }}
         />
-      </Box>
-    </Paper>
+      </Box >
+    </Paper >
   );
 }
 
