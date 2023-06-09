@@ -45,13 +45,13 @@ const FormInput = ({
       borderRadius: "3px",
       "& > p": {
         display: `${errMesgRemove ? "none" : "block"}`,
-      fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-        
+        fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+
       },
       "& > * ": {
         height: props.height,
         ...inputStyle,
-      fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif !important",
+        fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif !important",
 
         borderColor: "#cbd6e2",
         // backgroundColor: '##f5f8fa'
@@ -60,9 +60,9 @@ const FormInput = ({
         // borderColor: theme.palette.#cbd6e2,
         borderWidth: `${error ? "1px !important" : "1px"}`,
         borderRadius: "3px",
-      // backgroundColor: '##f5f8fa',
-      fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-      color: '#33475b'
+        // backgroundColor: '##f5f8fa',
+        fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+        color: '#33475b'
 
       },
     },
@@ -101,8 +101,8 @@ const FormInput = ({
       {label ? (
         <InputLabel
           sx={{
-            '& > *':{
-            fontSize: "13px !important",
+            '& > *': {
+              fontSize: "13px !important",
             },
             fontWeight: "500",
             color: "#272729",
@@ -151,7 +151,7 @@ const FormInput = ({
                 fontSize: "13px",
                 marginBottom: '4px',
                 fontWeight: "500",
-                color: "#272729",
+                color: "#fff",
                 fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
                 ...labelStyle,
               }}
