@@ -17,6 +17,7 @@ function App() {
     <Paper
       sx={{
         background: "#f4f8fa",
+
         width: "100vw",
         height: submited ? null : "100vh",
         minHeight: submited ? '100vh' : null,
