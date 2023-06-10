@@ -4,7 +4,6 @@ import PhoneFormat from "./components/formating/phoneFormat";
 import FormInput from "./components/FormInput";
 import { lead } from "./webhook";
 import { useState } from "react";
-import Flex from "./components/CustomFlex";
 
 function App() {
   const [submited, setSubmited] = useState(false)
@@ -67,7 +66,7 @@ function App() {
                       width: '300px'
                     }
                   }}>
-                    <img src="/logo.png" />
+                    <img src="/logo.png" alt='cardpoint miami logo' />
                   </Grid>
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
