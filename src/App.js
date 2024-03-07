@@ -16,23 +16,28 @@ function App() {
   return (
     <Paper
       sx={{
-        background: "#f4f8fa",
+        background: "#fffff",
 
-        width: "100vw",
-        height: submited ? null : "100vh",
-        minHeight: submited ? '100vh' : null,
-        position: "relative",
+        width: "100%",
+        height: submited ? null : "100%",
+        // minHeight: submited ? '100vh' : null,
         display: "flex",
         justifyContent: "center",
-        alignItems: submited ? 'center' : null
+        alignItems: "center",
+        flexDirection: 'column'
       }}
     >
+      <Box sx={{ height: '5.5rem', background: '#13152b', width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <Box sx={{ width: '90%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <img style={{ height: '100%' }} src="/logo.png" alt='cardpoint miami logo' />
+          <Typography sx={{ color: '#ffffff', fontWeight: 700 }}>Slice Dual Pricing Plan <span style={{ color: '#60cef4' }} >0%</span> <span style={{ textDecoration: 'line-through' }}>2.7 per swipe</span></Typography>
+        </Box>
+
+      </Box>
       <Box
         sx={{
-          background: "#173750",
+          background: "#fffff",
           borderRadius: submited ? '0.6rem' : null,
-          boxShadow:
-            "0 4px 8px 0 rgba(53,105,128,.3), 0 6px 20px 0 rgba(165,200,213,.41)",
           marginTop: submited ? null : window.innerWidth > 600 ? "100px" : null,
           width: submited ? 'fit-content' : "100%",
           maxWidth: 750,
@@ -67,14 +72,13 @@ function App() {
                       width: '300px'
                     }
                   }}>
-                    <img src="/logo.png" alt='cardpoint miami logo' />
                   </Grid>
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <FormInput
-                        name="firstName"
-                        label={<Box>First Name <Box sx={{ color: 'red !important', display: 'inline' }}>*</Box> </Box>}
-                        //   placeholder="het"
+                        name="bussinessName"
+                        label={<Box>Business legal name <Box sx={{ color: 'red !important', display: 'inline' }}>*</Box> </Box>}
+                        placeholder="Your Bussiness Name"
                         type="text"
                         width="100%"
                         required
@@ -82,9 +86,10 @@ function App() {
                     </Grid>
                     <Grid item xs={6}>
                       <FormInput
-                        name="lastName"
-                        label={<Box>Last Name <Box sx={{ color: 'red !important', display: 'inline' }}>*</Box> </Box>}
+                        name="businessStarted"
+                        label={<Box>Year business started <Box sx={{ color: 'red !important', display: 'inline' }}>*</Box> </Box>}
                         type="text"
+                        placeholder="YYYY"
                         width="100%"
                         required
                       />

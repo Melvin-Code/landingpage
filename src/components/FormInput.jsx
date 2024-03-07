@@ -35,7 +35,7 @@ const FormInput = ({
   };
   const classes = {
     sizing: {
-      backgroundColor: '#f5f8fa',
+      backgroundColor: '#ffff',
       width: "100%",
       color: '#33475b',
       fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
@@ -68,17 +68,19 @@ const FormInput = ({
     },
     placeStyle: {
       "&::placeholder": {
-        color: "text.lightText",
+        color: "#4a5057",
         opacity: 1,
-        fontSize: props.font,
+        fontWeight: 700,
+        fontSize: '20px !important',
         padding: props.padd,
       },
     },
 
     subLabel: {
       fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-      color: "text.lightText",
-      fontSize: "1.2rem",
+      color: "#4a5057",
+      fontWeight: 700,
+      fontSize: '20px !important',
       marginBottom: ".5rem",
     },
   };
@@ -105,7 +107,7 @@ const FormInput = ({
               fontSize: "13px !important",
             },
             fontWeight: "500",
-            color: "#272729",
+            color: "#333333",
             ...labelStyle,
           }}
           htmlFor={label ? label : ""}
@@ -148,10 +150,10 @@ const FormInput = ({
           {label ? (
             <InputLabel
               sx={{
-                fontSize: "13px",
+                fontSize: "16px",
                 marginBottom: '4px',
-                fontWeight: "500",
-                color: "#fff",
+                fontWeight: "700",
+                color: "#333333",
                 fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
                 ...labelStyle,
               }}
