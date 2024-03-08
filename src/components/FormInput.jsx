@@ -1,4 +1,4 @@
-import { InputLabel, TextField } from "@mui/material";
+import { InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Field } from "react-final-form";
 import Flex from "./CustomFlex";
@@ -6,7 +6,7 @@ import Flex from "./CustomFlex";
 // import Flex from "../../structure/CustomFlex";
 
 const FormInput = ({
-  fieldLess = false,
+  isSelect = false,
   width = "100%",
   minWidth = "2rem",
   parentWidth, // to target the parent of the input
@@ -20,6 +20,8 @@ const FormInput = ({
   cEndAdorment = false,
   maxLength = 200,
   validate,
+  helpertext,
+  selectOptions,
   ...props
 }) => {
   const [error, setError] = React.useState(false);
@@ -35,7 +37,7 @@ const FormInput = ({
   };
   const classes = {
     sizing: {
-      backgroundColor: '#f5f8fa',
+      backgroundColor: '#ffff',
       width: "100%",
       color: '#33475b',
       fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
@@ -68,17 +70,19 @@ const FormInput = ({
     },
     placeStyle: {
       "&::placeholder": {
-        color: "text.lightText",
+        color: "#4a5057",
         opacity: 1,
-        fontSize: props.font,
+        fontWeight: 700,
+        fontSize: '20px !important',
         padding: props.padd,
       },
     },
 
     subLabel: {
       fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-      color: "text.lightText",
-      fontSize: "1.2rem",
+      color: "#4a5057",
+      fontWeight: 700,
+      fontSize: '20px !important',
       marginBottom: ".5rem",
     },
   };
@@ -90,45 +94,72 @@ const FormInput = ({
     return meta.error;
   };
 
-  return fieldLess ? (
-    <Flex
-      style={{
-        flexDirection: "column",
-        minWidth: minWidth,
-        width: width,
-      }}
-    >
-      {label ? (
-        <InputLabel
-          sx={{
-            '& > *': {
-              fontSize: "13px !important",
-            },
-            fontWeight: "500",
-            color: "#272729",
-            ...labelStyle,
+  return isSelect ? (
+    <Field
+      validate={validate}
+      format={props.format}
+      component={React.ComponentType}
+      name={props.name}
+      render={({ input, meta }) => (
+        <Flex
+          id={id}
+          style={{
+            flexDirection: "column",
+            alignItems: "flex-start",
+            minWidth: minWidth,
+            width: width,
           }}
-          htmlFor={label ? label : ""}
         >
-          {label}
-        </InputLabel>
-      ) : null}
-      <TextField
-        defaultValue={value}
-        type={props.type}
-        sx={classes.sizing}
-        InputProps={{
-          inputComponent: props.cformat,
-          classes: {
-            input: classes.placeStyle,
-          },
-        }}
-        id={label}
-        variant="outlined"
-        size="small"
-        {...props}
-      />
-    </Flex>
+          {label ? (
+            <InputLabel
+              sx={{
+                fontSize: "16px",
+                marginBottom: '4px',
+                fontWeight: "700",
+                color: "#333333",
+                fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+                ...labelStyle,
+              }}
+              htmlFor={label ? label : ""}
+            >
+              {label}
+            </InputLabel>
+          ) : null}
+          <TextField
+            defaultValue={value}
+            select
+            error={errorSetter(meta.error, meta.touched)}
+            helperText={getHelperText(meta) ? getHelperText(meta) : helpertext}
+            sx={classes.sizing}
+            onBlur={(e) => {
+              console.log(e.target.value);
+            }}
+            id={label}
+            onChange={props.onChange ? props.onChange : null}
+            variant="outlined"
+            size="normal"
+            {...input}
+            {...props}
+            SelectProps={{
+              native: true,
+            }}
+          >
+            <option key='placeholder' value='' ><Typography sx={{
+              color: "#4a5057 !important",
+              opacity: 1,
+              fontWeight: 700,
+              fontSize: '20px !important',
+              padding: props.padd,
+            }} >{props.placeholder}</Typography></option>
+            {selectOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </TextField>
+        </Flex>
+      )}
+    />
   ) : (
     <Field
       validate={validate}
@@ -148,10 +179,10 @@ const FormInput = ({
           {label ? (
             <InputLabel
               sx={{
-                fontSize: "13px",
+                fontSize: "16px",
                 marginBottom: '4px',
-                fontWeight: "500",
-                color: "#fff",
+                fontWeight: "700",
+                color: "#333333",
                 fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
                 ...labelStyle,
               }}
@@ -164,7 +195,7 @@ const FormInput = ({
             defaultValue={value}
             type="field"
             error={errorSetter(meta.error, meta.touched)}
-            helperText={getHelperText(meta)}
+            helperText={getHelperText(meta) ? getHelperText(meta) : helpertext}
             sx={classes.sizing}
             onBlur={(e) => {
               console.log(e.target.value);
@@ -174,12 +205,10 @@ const FormInput = ({
               classes: {
                 input: classes.placeStyle,
               },
-              // startAdornment:
-              //   adorment === "dollar" ? (
-              //     <div style={{ width: "8px !important", height: "14px" }}>
-              //       <DollarSign />
-              //     </div>
-              //   ) : null,
+              startAdornment:
+                adorment === "dollar" ? (
+                  <InputAdornment position="start">$</InputAdornment>
+                ) : null,
               // endAdornment:
               //   adorment === "percent" ? (
               //     <div style={{ width: "14px !important", height: "16px" }}>
@@ -192,7 +221,7 @@ const FormInput = ({
             id={label}
             onChange={props.onChange ? props.onChange : null}
             variant="outlined"
-            size="small"
+            size="normal"
             {...input}
             {...props}
           />
