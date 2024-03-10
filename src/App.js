@@ -50,7 +50,7 @@ function App() {
             alt="cardpoint miami logo"
           />
           <Typography sx={{ color: "#ffffff", fontWeight: 700 }}>
-            Slice Dual Pricing Plan <span style={{ color: "#60cef4" }}>0%</span>{" "}
+            Cardtide Dual Pricing Plan <span style={{ color: "#60cef4" }}>0%</span>{" "}
             <span style={{ textDecoration: "line-through" }}>
               2.7 per swipe
             </span>
@@ -117,9 +117,9 @@ function App() {
                         marginBottom: '1rem',
                         textAlign: 'center'
 
-                      }} >Please tell us about your business and see how much you could save with Slice</Typography>
+                      }} >Please tell us about your business and see how much you could save with Cardtide</Typography>
                     </Grid>
-                    <Grid container spacing={2} direction={window.innerWidth > 600 ? 'row' : 'column'}>
+                    <Grid container spacing={2} sx={{ flexDirection: window.innerWidth > 600 ? 'row !important' : 'column !important' }}>
                       <Grid item xs={6}>
                         <FormInput
                           name="bussinessName"
@@ -136,7 +136,7 @@ function App() {
                               </Box>{" "}
                             </Box>
                           }
-                          placeholder="Your Bussiness Name"
+                          placeholder="Your Business Name"
                           type="text"
                           width="100%"
                           required
@@ -166,7 +166,7 @@ function App() {
                       </Grid>
                     </Grid>
                     <Grid item xs={12}></Grid>
-                    <Grid container spacing={2} direction={window.innerWidth > 600 ? 'row' : 'column'}>
+                    <Grid container spacing={2} sx={{ flexDirection: window.innerWidth > 600 ? 'row !important' : 'column !important' }}>
                       <Grid item xs={6}>
                         <FormInput
                           name="businessEmail"
@@ -222,7 +222,7 @@ function App() {
                       </Grid>
                     </Grid>
                     <Grid item xs={12}></Grid>
-                    <Grid container spacing={2} direction={window.innerWidth > 600 ? 'row' : 'column'}>
+                    <Grid container spacing={2} sx={{ flexDirection: window.innerWidth > 600 ? 'row !important' : 'column !important' }}>
                       <Grid item xs={6}>
                         <FormInput
                           name="anualVolume"
@@ -297,7 +297,7 @@ function App() {
                         />
                       </Grid>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'centernpm' }}>
                       <Button
                         variant="contained"
                         sx={{
