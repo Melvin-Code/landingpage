@@ -120,7 +120,7 @@ function App() {
                       }} >Please tell us about your business and see how much you could save with Cardtide</Typography>
                     </Grid>
                     <Grid container spacing={2} sx={{ flexDirection: window.innerWidth > 600 ? 'row !important' : 'column !important' }}>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} sm={6}>
                         <FormInput
                           name="bussinessName"
                           label={
@@ -142,7 +142,7 @@ function App() {
                           required
                         />
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} sm={6}>
                         <FormInput
                           name="businessStarted"
                           label={
@@ -167,7 +167,7 @@ function App() {
                     </Grid>
                     <Grid item xs={12}></Grid>
                     <Grid container spacing={2} sx={{ flexDirection: window.innerWidth > 600 ? 'row !important' : 'column !important' }}>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} sm={6}>
                         <FormInput
                           name="businessEmail"
                           label={
@@ -189,7 +189,7 @@ function App() {
                           required
                         />
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} sm={6}>
                         <FormInput
                           name="phone"
                           label={
@@ -223,7 +223,7 @@ function App() {
                     </Grid>
                     <Grid item xs={12}></Grid>
                     <Grid container spacing={2} sx={{ flexDirection: window.innerWidth > 600 ? 'row !important' : 'column !important' }}>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} sm={6}>
                         <FormInput
                           name="anualVolume"
                           label="Annual Visa/MC/Discover/Amex volume"
@@ -266,7 +266,7 @@ function App() {
                           required
                         />
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={12} sm={6}>
                         <FormInput
                           name="averageSale"
                           adorment='dollar'
